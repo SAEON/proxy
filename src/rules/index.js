@@ -13,22 +13,24 @@ const beforeSendRequest = async requestDetail => {
   const url = new URL(requestDetail.url)
   const { pathname } = url
 
+  const test = p => pathname.includes(p)
+
   try {
-    const proxiedRequest = pathname.includes('/elasticsearch/8.x')
+    const proxiedRequest = test('/elasticsearch/8.x')
       ? elasticsearch81Rule(requestDetail, url)
-      : pathname.includes('/elasticsearch/7.14')
+      : test('/elasticsearch/7.14')
       ? elasticsearch714Rule(requestDetail, url)
-      : pathname.includes('/elasticsearch')
+      : test('/elasticsearch')
       ? deprecatedElasticsearchRule(requestDetail, url)
-      : pathname.includes('/saeon-spatialdata/spatialdata.saeon.ac.za')
+      : test('/saeon-spatialdata/spatialdata.saeon.ac.za')
       ? saeonGeoServersRule(requestDetail, url)
-      : pathname.includes('/saeon-spatialdata/geoserver.saeon.ac.za')
+      : test('/saeon-spatialdata/geoserver.saeon.ac.za')
       ? saeonGeoServerApp04Rule(requestDetail, url)
-      : pathname.includes('/saeon-spatialdata/app04.saeon.ac.za')
+      : test('/saeon-spatialdata/app04.saeon.ac.za')
       ? saeonGeoServerApp04Rule2(requestDetail, url)
-      : pathname.includes('/ahocevar')
+      : test('/ahocevar')
       ? ahocevarRule(requestDetail, url)
-      : pathname.includes('/terrestris')
+      : test('/terrestris')
       ? terrestrisRule(requestDetail, url)
       : null
 
