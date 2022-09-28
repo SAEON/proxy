@@ -32,7 +32,7 @@ const beforeSendRequest = async requestDetail => {
       ? ahocevarRule(requestDetail, url)
       : test('/terrestris')
       ? terrestrisRule(requestDetail, url)
-      : null
+      : undefined
 
     if (!proxiedRequest) {
       throw new Error('No rule found')
