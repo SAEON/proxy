@@ -3,12 +3,7 @@ dotenv.config()
 
 export const AHOCEVAR_ADDRESS = 'https://ahocevar.com'
 
-export const CATALOGUE_PROXY_CSIR_ESRI_ADDRESS =
-  'https://pta-gis-2-web1.csir.co.za/server2/rest/services'
-
 export const CATALOGUE_PROXY_ENABLE_WEB_INTERFACE = true
-
-export const CATALOGUE_PROXY_HST_ESRI_PROXY = 'https://gisportal.saeon.ac.za/server/rest/services'
 
 export const CATALOGUE_PROXY_PORT = 8001
 

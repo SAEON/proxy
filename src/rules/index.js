@@ -1,6 +1,4 @@
 import { URL } from 'url'
-import csirRule from './_csir.js'
-import hstRule from './_hst.js'
 import deprecatedElasticsearchRule from './_elasticsearch-deprecated.js'
 import elasticsearch714Rule from './_elasticsearch-7.14.js'
 import elasticsearch81Rule from './_elasticsearch-8.x.js'
@@ -16,35 +14,25 @@ const beforeSendRequest = async requestDetail => {
   const { pathname } = url
 
   try {
-    let proxiedRequest
-    if (pathname.includes('/csir')) {
-      proxiedRequest = csirRule(requestDetail, url)
-    } else if (pathname.includes('/hst')) {
-      proxiedRequest = hstRule(requestDetail, url)
-    } else if (pathname.includes('/elasticsearch/8.x')) {
-      proxiedRequest = elasticsearch81Rule(requestDetail, url)
-    } else if (pathname.includes('/elasticsearch/7.14')) {
-      proxiedRequest = elasticsearch714Rule(requestDetail, url)
-    } else if (pathname.includes('/elasticsearch')) {
-      /**
-       * This rule is used by Marc Pienaar's QGIS plugin.
-       *
-       * Once he updates the QGIS plugin to access Elasticsearch on
-       * proxy.saeon.ac.za/elasticsearch/7.14/saeon-odp-catalogue-search/_search,
-       * this rule can be deleted
-       **/
-      proxiedRequest = deprecatedElasticsearchRule(requestDetail, url)
-    } else if (pathname.includes('/saeon-spatialdata/spatialdata.saeon.ac.za')) {
-      proxiedRequest = saeonGeoServersRule(requestDetail, url)
-    } else if (pathname.includes('/saeon-spatialdata/geoserver.saeon.ac.za')) {
-      proxiedRequest = saeonGeoServerApp04Rule(requestDetail, url)
-    } else if (pathname.includes('/saeon-spatialdata/app04.saeon.ac.za')) {
-      proxiedRequest = saeonGeoServerApp04Rule2(requestDetail, url)
-    } else if (pathname.includes('/ahocevar')) {
-      proxiedRequest = ahocevarRule(requestDetail, url)
-    } else if (pathname.includes('/terrestris')) {
-      proxiedRequest = terrestrisRule(requestDetail, url)
-    } else {
+    const proxiedRequest = pathname.includes('/elasticsearch/8.x')
+      ? elasticsearch81Rule(requestDetail, url)
+      : pathname.includes('/elasticsearch/7.14')
+      ? elasticsearch714Rule(requestDetail, url)
+      : pathname.includes('/elasticsearch')
+      ? deprecatedElasticsearchRule(requestDetail, url)
+      : pathname.includes('/saeon-spatialdata/spatialdata.saeon.ac.za')
+      ? saeonGeoServersRule(requestDetail, url)
+      : pathname.includes('/saeon-spatialdata/geoserver.saeon.ac.za')
+      ? saeonGeoServerApp04Rule(requestDetail, url)
+      : pathname.includes('/saeon-spatialdata/app04.saeon.ac.za')
+      ? saeonGeoServerApp04Rule2(requestDetail, url)
+      : pathname.includes('/ahocevar')
+      ? ahocevarRule(requestDetail, url)
+      : pathname.includes('/terrestris')
+      ? terrestrisRule(requestDetail, url)
+      : null
+
+    if (!proxiedRequest) {
       throw new Error('No rule found')
     }
 
