@@ -7,8 +7,8 @@ networks:
     attachable: true
 
 services:
-  proxy:
-    image: $PROXY_IMAGE
+  node:
+    image: $DOCKER_IMAGE
     deploy:
       replicas: 1
       rollback_config:
