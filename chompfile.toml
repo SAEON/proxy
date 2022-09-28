@@ -1,22 +1,28 @@
 version = 0.1
 default-task = 'start'
 
-[[task]]
-name = 'ncu'
-run = 'ncu'
-
-[[task]]
-name = 'ncu:u'
-run = 'ncu -u'
+extensions = ['chomp@0.1:prettier']
 
 [[task]]
 name = 'start'
-env = { NODE_ENV = 'development', TZ = 'utc' }
+env = { TZ='UTC', NODE_ENV='development'}
+deps = [ "prettier"]
 run = """
-  nodemon \
-    --watch ./src \
-    --exec 'node --trace-warnings --experimental-json-modules src'
+node \
+  --trace-warnings \
+  --experimental-json-modules \
+  src
 """
+
+[[task]]
+name = 'prettier'
+deps = [ 'src/**/*.js' ]
+template = 'prettier'
+[task.template-options]
+ignore-path = '.prettierignore'
+files = 'src/**/*.@(js|json|yml)'
+loglevel = 'warn'
+config = '.prettierrc'
 
 [[task]]
 name = 'reset'

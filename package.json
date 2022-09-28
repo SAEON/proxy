@@ -1,28 +1,20 @@
 {
-  "name": "@catalogue/proxy",
+  "name": "@saeon/proxy",
   "version": "1.0.0",
-  "description": "A wraper for anyproxy, to deploy behind Node.js as a caching server",
-  "main": "index.js",
+  "description": "A wrapper for AnyProxy, a Node.js caching/reverse proxy server",
   "type": "module",
-  "scripts": {
-    "start": "nodemon --watch ./src --exec 'prettier --write \"src/**/*.@(js|json)\" && NODE_ENV=development TZ=utc node --trace-warnings --experimental-json-modules src'",
-    "start:prod": "NODE_ENV=production TZ=utc node --no-warnings --experimental-json-modules src",
-    "ncu": "ncu",
-    "ncu -u": "ncu -u"
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SAEON/catalogue.git"
+    "url": "git+https://github.com/SAEON/proxy.git"
   },
-  "keywords": [
-    "anyproxy"
-  ],
+  "keywords": [],
   "author": "zd.smith@saeon.nrf.ac.za",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/SAEON/catalogue/issues"
+    "url": "https://github.com/SAEON/proxy/issues"
   },
-  "homepage": "https://github.com/SAEON/catalogue/tree/master/src/@saeon/proxy#readme",
+  "homepage": "https://github.com/SAEON/proxy#readme",
   "dependencies": {
     "@babel/runtime": "^7.19.0",
     "@saeon/logger": "^6.2.22",
@@ -33,8 +25,6 @@
     "url": "^0.11.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.20",
-    "npm-check-updates": "^16.3.2",
     "prettier": "^2.7.1"
   }
 }
