@@ -1,13 +1,13 @@
 import { URL } from 'url'
 import { normalize } from 'path'
-import { CATALOGUE_PROXY_SAEON_SPATIALDATA_ADDRESS_APP04 } from '../config.js'
+import { SAEON_SPATIALDATA_ADDRESS_APP04 } from '../config.js'
 
 const {
   protocol,
   hostname,
   host,
   pathname: destinationPath,
-} = new URL(CATALOGUE_PROXY_SAEON_SPATIALDATA_ADDRESS_APP04)
+} = new URL(SAEON_SPATIALDATA_ADDRESS_APP04)
 
 export default (requestDetail, { pathname: originPathname, search }) => {
   const port = originPathname

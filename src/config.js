@@ -2,17 +2,17 @@ import 'dotenv/config'
 
 export const AHOCEVAR_ADDRESS = 'https://ahocevar.com'
 
-export const CATALOGUE_PROXY_ENABLE_WEB_INTERFACE = true
+export const ENABLE_WEB_INTERFACE = true
 
-export const CATALOGUE_PROXY_PORT = 8001
+export const PORT = 8001
 
-export const CATALOGUE_PROXY_SAEON_SPATIALDATA_ADDRESS = 'https://spatialdata.saeon.ac.za'
+export const SAEON_SPATIALDATA_ADDRESS = 'https://spatialdata.saeon.ac.za'
 
-export const CATALOGUE_PROXY_SAEON_SPATIALDATA_ADDRESS_APP04 = 'http://geoserver.saeon.ac.za'
+export const SAEON_SPATIALDATA_ADDRESS_APP04 = 'http://geoserver.saeon.ac.za'
 
-export const CATALOGUE_PROXY_THROTTLE = 10000
+export const THROTTLE = 10000
 
-export const CATALOGUE_PROXY_WEB_INTERFACE_PORT = 8002
+export const WEB_INTERFACE_PORT = 8002
 
 export const ELASTICSEARCH_NEXT_ADDRESS =
   process.env.ELASTICSEARCH_NEXT_ADDRESS || 'http://localhost:9200'
