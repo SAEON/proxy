@@ -1,4 +1,4 @@
-name: Deploy proxy.saeon.ac.za
+name: Deploy proxy.saeon.dvn
 
 on: workflow_dispatch
 
