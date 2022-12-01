@@ -22,7 +22,7 @@ chomp --watch
 ```
 
 # Deployment
-TODO
+Refer to the GitHub Actions configuration for deployment information
 
 # Environment configuration
 Default configuration values can be found in [src/config.js](src/config.js). To update the default values, create a `.env` file in the root of the API service source code and specify variables to overwrite.
