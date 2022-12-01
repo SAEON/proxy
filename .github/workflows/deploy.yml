@@ -27,7 +27,7 @@ jobs:
       image: ${{ steps.meta.outputs.tags }}
     steps:
       - name: Checkout source code
-        uses: actions/checkout@master
+        uses: actions/checkout@v3
         with:
           ref: ${{ env.BRANCH_REF }}
       - name: Log in to the Container registry
@@ -63,7 +63,7 @@ jobs:
       STACK_CONFIG_PATH: /home/runner/proxy/deploy/${{ inputs.stack }}/stack.env
     steps:
       - name: Check out source code
-        uses: actions/checkout@master
+        uses: actions/checkout@v3
         with:
           ref: ${{ env.BRANCH_REF }}
 
