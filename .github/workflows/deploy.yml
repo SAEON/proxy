@@ -16,18 +16,18 @@ env:
   SWARM_SSH_PORT: ${{ secrets.SWARM_SSH_PORT }} # Organization secret
   REGISTRY: ghcr.io
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  BRANCH_REF: main
 
 jobs:
   build:
     runs-on: ubuntu-latest
     env:
       IMAGE_NAME: ${{ github.repository }}_node_${{ inputs.stack }}
+      BRANCH_REF: ${{ inputs.stack }}
     outputs:
       image: ${{ steps.meta.outputs.tags }}
     steps:
       - name: Checkout source code
-        uses: actions/checkout@v3
+        uses: actions/checkout@master
         with:
           ref: ${{ env.BRANCH_REF }}
       - name: Log in to the Container registry
@@ -58,12 +58,13 @@ jobs:
     needs: [build]
     runs-on: saeon
     env:
+      BRANCH_REF: ${{ inputs.stack }}
       DEPLOY_SOURCE: deploy/${{ inputs.stack }}/stack.yml
       STACK_COMPOSE_PATH: /home/runner/proxy/deploy/${{ inputs.stack }}/stack.yml
       STACK_CONFIG_PATH: /home/runner/proxy/deploy/${{ inputs.stack }}/stack.env
     steps:
       - name: Check out source code
-        uses: actions/checkout@v3
+        uses: actions/checkout@master
         with:
           ref: ${{ env.BRANCH_REF }}
 
