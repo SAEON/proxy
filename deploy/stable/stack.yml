@@ -24,9 +24,9 @@ services:
         condition: any
         delay: 30s
     environment:
-      ELASTICSEARCH_NEXT_ADDRESS: http://next.elasticsearch.saeon.int
-      ELASTICSEARCH_7_14_ADDRESS: http://7.14.elasticsearch.saeon.int
-      ELASTICSEARCH_8_X_ADDRESS: http://8.x.elasticsearch.saeon.int
+      ELASTICSEARCH_NEXT_ADDRESS: $ELASTICSEARCH_NEXT_ADDRESS
+      ELASTICSEARCH_7_14_ADDRESS: $ELASTICSEARCH_7_14_ADDRESS
+      ELASTICSEARCH_8_X_ADDRESS: $ELASTICSEARCH_8_X_ADDRESS
       TZ: utc
       NODE_ENV: production
     ports:
