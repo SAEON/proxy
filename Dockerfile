@@ -17,7 +17,7 @@ ENV ELASTICSEARCH_8_X_ADDRESS=$ELASTICSEARCH_8_X_ADDRESS
 
 WORKDIR /app
 COPY . .
-RUN npm ci --omit=dev
+RUN npm ci --force --omit=dev
 EXPOSE 8001 8002
 
 CMD \
