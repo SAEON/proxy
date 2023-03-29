@@ -1,4 +1,4 @@
-FROM node:19.8.1
+FROM node:19.1.0
 
 ARG TZ
 ENV TZ=$TZ
@@ -17,7 +17,7 @@ ENV ELASTICSEARCH_8_X_ADDRESS=$ELASTICSEARCH_8_X_ADDRESS
 
 WORKDIR /app
 COPY . .
-RUN npm ci --force --omit=dev
+RUN npm ci --omit=dev
 EXPOSE 8001 8002
 
 CMD \
