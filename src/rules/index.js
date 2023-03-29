@@ -55,7 +55,30 @@ const beforeSendRequest = async requestDetail => {
 }
 
 const beforeSendResponse = async (requestDetail, responseDetail) => {
-  return corsRule(requestDetail, responseDetail)
+  const url = new URL(requestDetail.url)
+  const { pathname } = url
+
+  const ctx = corsRule(requestDetail, responseDetail)
+
+  const test = p => pathname.includes(p)
+  // if (test('/saeon-archive')) {
+  //   const { body } = responseDetail.response
+  //   // const newBody = body
+  //   //   .toString()
+  //   //   .replace(/http:\/\/archive\.saeon\.ac\.za/g, 'http://localhost:8001/saeon-archive')
+
+  //   const ctx_ = ctx || {
+  //     response: {
+  //       ...responseDetail.response,
+  //     },
+  //   }
+
+  // ctx_.response.body = newBody
+
+  // return ctx_
+  // }
+
+  return ctx
 }
 
 export default {
