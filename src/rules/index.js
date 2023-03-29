@@ -8,6 +8,7 @@ import saeonGeoServerApp04Rule2 from './_saeon-geoserver-app04-2.js'
 import corsRule from './_cors.js'
 import ahocevarRule from './_ahocevar.js'
 import terrestrisRule from './_terrestris.js'
+import archiveSaeonAcZa from './_archive.saeon.ac.za.js'
 
 const beforeSendRequest = async requestDetail => {
   const url = new URL(requestDetail.url)
@@ -32,6 +33,8 @@ const beforeSendRequest = async requestDetail => {
       ? ahocevarRule(requestDetail, url)
       : test('/terrestris')
       ? terrestrisRule(requestDetail, url)
+      : test('/saeon-archive')
+      ? archiveSaeonAcZa(requestDetail, url)
       : undefined
 
     if (!proxiedRequest) {
