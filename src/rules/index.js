@@ -9,6 +9,7 @@ import corsRule from './_cors.js'
 import ahocevarRule from './_ahocevar.js'
 import terrestrisRule from './_terrestris.js'
 import archiveSaeonAcZa from './_archive.saeon.ac.za.js'
+import lognetRule from './_lognet.js'
 
 const beforeSendRequest = async requestDetail => {
   const url = new URL(requestDetail.url)
@@ -35,6 +36,8 @@ const beforeSendRequest = async requestDetail => {
       ? terrestrisRule(requestDetail, url)
       : test('/saeon-archive')
       ? archiveSaeonAcZa(requestDetail, url)
+      : test('/lognet')
+      ? lognetRule(requestDetail, url)
       : undefined
 
     if (!proxiedRequest) {

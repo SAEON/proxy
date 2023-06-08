@@ -5,7 +5,7 @@ extensions = ['chomp@0.1:prettier']
 
 [[task]]
 name = 'start'
-env = { TZ='UTC', NODE_ENV='development'}
+env = { TZ='UTC', NODE_ENV='development', NODE_TLS_REJECT_UNAUTHORIZED='0'}
 deps = [ 'src/**/*.js' ]
 run = """
 node \

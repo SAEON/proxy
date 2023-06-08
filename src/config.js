@@ -21,6 +21,8 @@ export const ELASTICSEARCH_7_14_ADDRESS =
 export const ELASTICSEARCH_8_X_ADDRESS =
   process.env.ELASTICSEARCH_8_X_ADDRESS || 'http://localhost:9200'
 
+export const LOGNET_ADDRESS = 'https://lognet.saeon.ac.za'
+
 export const TERRESTRIS_ADDRESS = 'https://ows.terrestris.de'
 
 export const ALLOWED_ES_INDICES = [

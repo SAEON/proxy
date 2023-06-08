@@ -29,6 +29,7 @@ services:
       ELASTICSEARCH_8_X_ADDRESS: $ELASTICSEARCH_8_X_ADDRESS
       TZ: utc
       NODE_ENV: production
+      NODE_TLS_REJECT_UNAUTHORIZED: '0'
     ports:
       - 6001:8001
       - 6002:8002
