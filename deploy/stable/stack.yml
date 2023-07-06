@@ -23,6 +23,10 @@ services:
       restart_policy:
         condition: any
         delay: 30s
+      resources:
+        limits:
+          cpus: "2"
+          memory: 250M
     environment:
       ELASTICSEARCH_NEXT_ADDRESS: $ELASTICSEARCH_NEXT_ADDRESS
       ELASTICSEARCH_7_14_ADDRESS: $ELASTICSEARCH_7_14_ADDRESS
