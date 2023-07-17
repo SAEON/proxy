@@ -26,7 +26,7 @@ services:
       resources:
         limits:
           cpus: "2"
-          memory: 250M
+          memory: 1G
     environment:
       ELASTICSEARCH_NEXT_ADDRESS: $ELASTICSEARCH_NEXT_ADDRESS
       ELASTICSEARCH_7_14_ADDRESS: $ELASTICSEARCH_7_14_ADDRESS
